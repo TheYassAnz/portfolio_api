@@ -12,9 +12,24 @@ app.use((req, res, next) => {
     next();
 });
 
+const introduction = {
+    message: 'Welcome to the API',
+    warning: 'This is a simple message from the server',
+    owner: {
+        name: 'John Doe',
+        position: 'Full Stack Developer',
+        company: 'John Doe\'s Company',
+        contact: {
+            mail: 'john@doe.com',
+            phone: '123-456-7890',
+            address: '1234 Main Street, New York, NY 10001',
+        }
+    }
+};
+
 // simple middleware
-app.use((req, res) => {
-    res.json({ message: 'Hello World!' });
+app.get('/api', (req, res) => {
+    res.json(introduction);
 })
 
 // export the express app
